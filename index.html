@@ -1,14 +1,14 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ellipsometrics | Spectroscopic Ellipsometry & Consultation</title>
-  <meta name="description" content="Spectroscopic ellipsometry measurements and thin‑film consultation. Thickness, n & k, roughness and model fits across UV–IR. Fast, reliable reports for R&D and production." />
+  <title id="doc-title">Ellipsometrics | Spectroscopic Ellipsometry & Consultation</title>
+  <meta id="doc-desc" name="description" content="Spectroscopic ellipsometry measurements and thin‑film consultation. Thickness, n & k, roughness and model fits across UV–IR. Fast, reliable reports for R&D and production." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#0b0f17;--panel:#121826;--panel-2:#0f1724;--text:#eef2ff;--muted:#9aa4b2;--accent:#58b4ff;--accent-2:#10b981;--border:#1e293b}
+    :root{--bg:#0b0f17;--panel:#121826;--panel-2:#0f1724;--text:#eef2ff;--muted:#9aa4b2;--accent:#58b4ff;--border:#1e293b}
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Noto Sans,Ubuntu,Cantarell,'Helvetica Neue',Arial; background:radial-gradient(1200px 900px at 100% -50%, #142034 10%, transparent 70%),linear-gradient(180deg,var(--panel-2),var(--bg)); color:var(--text)}
@@ -19,10 +19,11 @@
     .logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:grid;place-items:center;box-shadow:0 10px 30px rgba(88,180,255,.35)}
     .logo svg{filter:drop-shadow(0 2px 2px rgba(0,0,0,.35))}
     .brand h1{font-size:18px;margin:0;letter-spacing:.2px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:12px;border:1px solid var(--border);background:linear-gradient(180deg,#1a2335,#111827);color:var(--text);cursor:pointer}
-    .btn.primary{border-color:transparent;background:linear-gradient(180deg,#58b4ff,#3b82f6);color:#061423;font-weight:700}
-    .btn.primary:hover{filter:brightness(1.05)}
-    .btn:hover{border-color:#334155}
+
+    .lang-switch{display:flex;gap:8px;align-items:center}
+    .lang-btn{border:1px solid var(--border);background:linear-gradient(180deg,#1a2335,#111827);border-radius:12px;padding:6px 10px;cursor:pointer;display:flex;align-items:center;gap:8px;color:var(--text)}
+    .lang-btn.active{outline:2px solid #3b82f6}
+    .flag{font-size:18px;line-height:1}
 
     .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:72px 0}
     @media (max-width:920px){.hero{grid-template-columns:1fr;padding:48px 0}}
@@ -65,83 +66,62 @@
       </div>
       <h1>Ellipsometrics</h1>
     </div>
-    <a class="btn" href="#contact">Contact</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button class="lang-btn" id="btn-en" data-lang="en" aria-label="English"><span class="flag">🇺🇸</span> EN</button>
+      <button class="lang-btn" id="btn-es" data-lang="es" aria-label="Español"><span class="flag">🇲🇽</span> ES</button>
+    </div>
   </header>
 
-  <main class="container">
+  <main class="container" id="main">
+    <!-- HERO -->
     <section class="hero">
       <div>
-        <h2 class="headline">Spectroscopic Ellipsometry & Thin‑Film Consultation</h2>
-        <p class="sub">Get results you can trust: thickness, refractive index (n, k), and surface roughness from UV–IR with model fits and clean, reproducible methods. Perfect for R&D, vendor qualification, and production QA.</p>
+        <h2 class="headline" id="headline">Spectroscopic Ellipsometry & Thin‑Film Consultation</h2>
+        <p class="sub" id="sub">Get results you can trust: thickness, refractive index (n, k), and surface roughness from UV–IR with model fits and clean, reproducible methods. Perfect for R&D, vendor qualification, and production QA.</p>
         <div class="hero-cta">
-          <a class="btn primary" href="mailto:info@ellipsometrics.com?subject=Ellipsometry%20inquiry">Email us</a>
-          <a class="btn" href="#process">How it works</a>
+          <a class="btn" id="cta-secondary" href="#process">How it works</a>
+          <a class="btn" id="cta-primary" href="mailto:info@ellipsometrics.com?subject=Ellipsometry%20inquiry">info@ellipsometrics.com</a>
         </div>
       </div>
       <div class="card">
         <div class="grid">
-          <div class="kpi">
-            <span class="num">20+ yrs</span>
-            <span class="label">ellipsometry expertise</span>
-          </div>
-          <div class="kpi">
-            <span class="num">UV–IR</span>
-            <span class="label">broad spectral range</span>
-          </div>
-          <div class="kpi">
-            <span class="num">Fast</span>
-            <span class="label">turnaround reports</span>
-          </div>
+          <div class="kpi"><span class="num" id="kpi1-num">20+ yrs</span><span class="label" id="kpi1-label">ellipsometry expertise</span></div>
+          <div class="kpi"><span class="num" id="kpi2-num">UV–IR</span><span class="label" id="kpi2-label">broad spectral range</span></div>
+          <div class="kpi"><span class="num" id="kpi3-num">Fast</span><span class="label" id="kpi3-label">turnaround reports</span></div>
         </div>
       </div>
     </section>
 
+    <!-- PROCESS -->
     <section id="process" class="section">
-      <h2>How it works</h2>
-      <p>Simple, focused, measurement‑first engagement.</p>
+      <h2 id="process-title">How it works</h2>
+      <p id="process-sub">Simple, focused, measurement‑first engagement.</p>
       <div class="steps">
-        <div class="step">
-          <h3>1) Tell us your question</h3>
-          <p>What do you need to know—thickness, n & k dispersion, roughness, film uniformity, stack verification?</p>
-        </div>
-        <div class="step">
-          <h3>2) Send samples</h3>
-          <p>We measure, model, and validate against your expected materials / dispersion models (Cauchy, Tauc‑Lorentz, etc.).</p>
-        </div>
-        <div class="step">
-          <h3>3) Receive a clear report</h3>
-          <p>Includes fitted parameters, residuals, assumptions, AOI/λ ranges, and raw data for your archives.</p>
-        </div>
+        <div class="step"><h3 id="step1-title">1) Tell us your question</h3><p id="step1-desc">What do you need to know—thickness, n & k dispersion, roughness, film uniformity, stack verification?</p></div>
+        <div class="step"><h3 id="step2-title">2) Send samples</h3><p id="step2-desc">We measure, model, and validate against your expected materials / dispersion models (Cauchy, Tauc‑Lorentz, etc.).</p></div>
+        <div class="step"><h3 id="step3-title">3) Receive a clear report</h3><p id="step3-desc">Includes fitted parameters, residuals, assumptions, AOI/λ ranges, and raw data for your archives.</p></div>
       </div>
     </section>
 
+    <!-- CONTACT CTA -->
     <section class="section">
       <div class="cta-panel">
-        <h2 style="margin:0">Ready to get measured?</h2>
-        <p style="margin:0;color:var(--muted)">Email <a href="mailto:info@ellipsometrics.com">info@ellipsometrics.com</a> with a short note (materials, substrate, wavelength range, expected thickness). We’ll confirm scope and timeline.</p>
-        <form action="mailto:info@ellipsometrics.com" method="post" enctype="text/plain">
-          <input class="input" type="text" name="Company" placeholder="Company / Org" />
-          <input class="input" type="email" name="Email" placeholder="Your email" required />
-          <input class="input" type="text" name="Notes" placeholder="Material(s) & what you want to learn" />
-          <button class="btn primary" type="submit">Start an email</button>
-        </form>
+        <h2 style="margin:0" id="cta-panel-title">Ready to get measured?</h2>
+        <p style="margin:0;color:var(--muted)" id="cta-panel-text">Email <a href="mailto:info@ellipsometrics.com">info@ellipsometrics.com</a> with a short note (materials, substrate, wavelength range, expected thickness). We’ll confirm scope and timeline.</p>
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="section">
-      <h2>Contact</h2>
-      <p>Email <a href="mailto:info@ellipsometrics.com">info@ellipsometrics.com</a></p>
+      <h2 id="contact-title">Contact</h2>
+      <p id="contact-text">Email <a href="mailto:info@ellipsometrics.com">info@ellipsometrics.com</a></p>
     </section>
 
     <footer class="container footer">
       <div>© <span id="yr"></span> Ellipsometrics LLC. All rights reserved.</div>
-      <div style="margin-top:6px">Lightweight static site. No cookies. No trackers.</div>
+      <div style="margin-top:6px" id="footer-note">Lightweight static site. No cookies. No trackers.</div>
     </footer>
   </main>
-
-  <script>
-    document.getElementById('yr').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
 <!DOCTYPE html>
@@ -149,12 +129,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ellipsometrics | Spectroscopic Ellipsometry & Consultation</title>
-  <meta name="description" content="Spectroscopic ellipsometry measurements and thin‑film consultation. Thickness, n & k, roughness and model fits across UV–IR. Fast, reliable reports for R&D and production." />
+  <title id="doc-title">Ellipsometrics | Spectroscopic Ellipsometry & Consultation</title>
+  <meta id="doc-desc" name="description" content="Spectroscopic ellipsometry measurements and thin‑film consultation. Thickness, n & k, roughness and model fits across UV–IR. Fast, reliable reports for R&D and production." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#0b0f17;--panel:#121826;--panel-2:#0f1724;--text:#eef2ff;--muted:#9aa4b2;--accent:#58b4ff;--accent-2:#10b981;--border:#1e293b}
+    :root{--bg:#0b0f17;--panel:#121826;--panel-2:#0f1724;--text:#eef2ff;--muted:#9aa4b2;--accent:#58b4ff;--border:#1e293b}
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Noto Sans,Ubuntu,Cantarell,'Helvetica Neue',Arial; background:radial-gradient(1200px 900px at 100% -50%, #142034 10%, transparent 70%),linear-gradient(180deg,var(--panel-2),var(--bg)); color:var(--text)}
@@ -165,10 +145,11 @@
     .logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:grid;place-items:center;box-shadow:0 10px 30px rgba(88,180,255,.35)}
     .logo svg{filter:drop-shadow(0 2px 2px rgba(0,0,0,.35))}
     .brand h1{font-size:18px;margin:0;letter-spacing:.2px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:12px;border:1px solid var(--border);background:linear-gradient(180deg,#1a2335,#111827);color:var(--text);cursor:pointer}
-    .btn.primary{border-color:transparent;background:linear-gradient(180deg,#58b4ff,#3b82f6);color:#061423;font-weight:700}
-    .btn.primary:hover{filter:brightness(1.05)}
-    .btn:hover{border-color:#334155}
+
+    .lang-switch{display:flex;gap:8px;align-items:center}
+    .lang-btn{border:1px solid var(--border);background:linear-gradient(180deg,#1a2335,#111827);border-radius:12px;padding:6px 10px;cursor:pointer;display:flex;align-items:center;gap:8px;color:var(--text)}
+    .lang-btn.active{outline:2px solid #3b82f6}
+    .flag{font-size:18px;line-height:1}
 
     .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:72px 0}
     @media (max-width:920px){.hero{grid-template-columns:1fr;padding:48px 0}}
@@ -211,83 +192,101 @@
       </div>
       <h1>Ellipsometrics</h1>
     </div>
-    <a class="btn" href="#contact">Contact</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button class="lang-btn" id="btn-en" data-lang="en" aria-label="English"><span class="flag">🇺🇸</span> EN</button>
+      <button class="lang-btn" id="btn-es" data-lang="es" aria-label="Español"><span class="flag">🇲🇽</span> ES</button>
+    </div>
   </header>
 
-  <main class="container">
+  <main class="container" id="main">
+    <!-- HERO -->
     <section class="hero">
       <div>
-        <h2 class="headline">Spectroscopic Ellipsometry & Thin‑Film Consultation</h2>
-        <p class="sub">Get results you can trust: thickness, refractive index (n, k), and surface roughness from UV–IR with model fits and clean, reproducible methods. Perfect for R&D, vendor qualification, and production QA.</p>
+        <h2 class="headline" id="headline">Spectroscopic Ellipsometry & Thin‑Film Consultation</h2>
+        <p class="sub" id="sub">Get results you can trust: thickness, refractive index (n, k), and surface roughness from UV–IR with model fits and clean, reproducible methods. Perfect for R&D, vendor qualification, and production QA.</p>
         <div class="hero-cta">
-          <a class="btn primary" href="mailto:info@ellipsometrics.com?subject=Ellipsometry%20inquiry">Email us</a>
-          <a class="btn" href="#process">How it works</a>
+          <a class="btn" id="cta-secondary" href="#process">How it works</a>
+          <a class="btn" id="cta-primary" href="mailto:info@ellipsometrics.com?subject=Ellipsometry%20inquiry">info@ellipsometrics.com</a>
         </div>
       </div>
       <div class="card">
         <div class="grid">
-          <div class="kpi">
-            <span class="num">20+ yrs</span>
-            <span class="label">ellipsometry expertise</span>
-          </div>
-          <div class="kpi">
-            <span class="num">UV–IR</span>
-            <span class="label">broad spectral range</span>
-          </div>
-          <div class="kpi">
-            <span class="num">Fast</span>
-            <span class="label">turnaround reports</span>
-          </div>
+          <div class="kpi"><span class="num" id="kpi1-num">20+ yrs</span><span class="label" id="kpi1-label">ellipsometry expertise</span></div>
+          <div class="kpi"><span class="num" id="kpi2-num">UV–IR</span><span class="label" id="kpi2-label">broad spectral range</span></div>
+          <div class="kpi"><span class="num" id="kpi3-num">Fast</span><span class="label" id="kpi3-label">turnaround reports</span></div>
         </div>
       </div>
     </section>
 
+    <!-- PROCESS -->
     <section id="process" class="section">
-      <h2>How it works</h2>
-      <p>Simple, focused, measurement‑first engagement.</p>
+      <h2 id="process-title">How it works</h2>
+      <p id="process-sub">Simple, focused, measurement‑first engagement.</p>
       <div class="steps">
-        <div class="step">
-          <h3>1) Tell us your question</h3>
-          <p>What do you need to know—thickness, n & k dispersion, roughness, film uniformity, stack verification?</p>
-        </div>
-        <div class="step">
-          <h3>2) Send samples</h3>
-          <p>We measure, model, and validate against your expected materials / dispersion models (Cauchy, Tauc‑Lorentz, etc.).</p>
-        </div>
-        <div class="step">
-          <h3>3) Receive a clear report</h3>
-          <p>Includes fitted parameters, residuals, assumptions, AOI/λ ranges, and raw data for your archives.</p>
-        </div>
+        <div class="step"><h3 id="step1-title">1) Tell us your question</h3><p id="step1-desc">What do you need to know—thickness, n & k dispersion, roughness, film uniformity, stack verification?</p></div>
+        <div class="step"><h3 id="step2-title">2) Send samples</h3><p id="step2-desc">We measure, model, and validate against your expected materials / dispersion models (Cauchy, Tauc‑Lorentz, etc.).</p></div>
+        <div class="step"><h3 id="step3-title">3) Receive a clear report</h3><p id="step3-desc">Includes fitted parameters, residuals, assumptions, AOI/λ ranges, and raw data for your archives.</p></div>
       </div>
     </section>
 
+    <!-- CONTACT CTA -->
     <section class="section">
       <div class="cta-panel">
-        <h2 style="margin:0">Ready to get measured?</h2>
-        <p style="margin:0;color:var(--muted)">Email <a href="mailto:info@ellipsometrics.com">info@ellipsometrics.com</a> with a short note (materials, substrate, wavelength range, expected thickness). We’ll confirm scope and timeline.</p>
-        <form action="mailto:info@ellipsometrics.com" method="post" enctype="text/plain">
-          <input class="input" type="text" name="Company" placeholder="Company / Org" />
-          <input class="input" type="email" name="Email" placeholder="Your email" required />
-          <input class="input" type="text" name="Notes" placeholder="Material(s) & what you want to learn" />
-          <button class="btn primary" type="submit">Start an email</button>
-        </form>
+        <h2 style="margin:0" id="cta-panel-title">Ready to get measured?</h2>
+        <p style="margin:0;color:var(--muted)" id="cta-panel-text">Email <a href="mailto:info@ellipsometrics.com">info@ellipsometrics.com</a> with a short note (materials, substrate, wavelength range, expected thickness). We’ll confirm scope and timeline.</p>
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="section">
-      <h2>Contact</h2>
-      <p>Email <a href="mailto:info@ellipsometrics.com">info@ellipsometrics.com</a></p>
+      <h2 id="contact-title">Contact</h2>
+      <p id="contact-text">Email <a href="mailto:info@ellipsometrics.com">info@ellipsometrics.com</a></p>
     </section>
 
     <footer class="container footer">
       <div>© <span id="yr"></span> Ellipsometrics LLC. All rights reserved.</div>
-      <div style="margin-top:6px">Lightweight static site. No cookies. No trackers.</div>
+      <div style="margin-top:6px" id="footer-note">Lightweight static site. No cookies. No trackers.</div>
     </footer>
   </main>
 
   <script>
+    // i18n text
+    const i18n = {
+      en:{title:'Ellipsometrics | Spectroscopic Ellipsometry & Consultation',desc:'Spectroscopic ellipsometry measurements and thin‑film consultation. Thickness, n & k, roughness and model fits across UV–IR. Fast, reliable reports for R&D and production.',headline:'Spectroscopic Ellipsometry & Thin‑Film Consultation',sub:'Get results you can trust: thickness, refractive index (n, k), and surface roughness from UV–IR with model fits and clean, reproducible methods. Perfect for R&D, vendor qualification, and production QA.',ctaSecondary:'How it works',ctaPrimary:'info@ellipsometrics.com',k1n:'20+ yrs',k1l:'ellipsometry expertise',k2n:'UV–IR',k2l:'broad spectral range',k3n:'Fast',k3l:'turnaround reports',pt:'How it works',ps:'Simple, focused, measurement‑first engagement.',s1t:'1) Tell us your question',s1d:'What do you need to know—thickness, n & k dispersion, roughness, film uniformity, stack verification?',s2t:'2) Send samples',s2d:'We measure, model, and validate against your expected materials / dispersion models (Cauchy, Tauc‑Lorentz, etc.).',s3t:'3) Receive a clear report',s3d:'Includes fitted parameters, residuals, assumptions, AOI/λ ranges, and raw data for your archives.',cpTitle:'Ready to get measured?',cpText:'Email <a href="mailto:info@ellipsometrics.com">info@ellipsometrics.com</a> with a short note (materials, substrate, wavelength range, expected thickness). We’ll confirm scope and timeline.',contactTitle:'Contact',contactText:'Email <a href="mailto:info@ellipsometrics.com">info@ellipsometrics.com</a>',footer:'Lightweight static site. No cookies. No trackers.',subject:'Ellipsometry inquiry'},
+      es:{title:'Ellipsometrics | Elipsometría Espectroscópica y Consultoría',desc:'Mediciones de elipsometría espectroscópica y consultoría en películas delgadas. Espesor, n y k, rugosidad y modelos en UV–IR. Reportes rápidos y confiables para I+D y producción.',headline:'Elipsometría Espectroscópica y Consultoría en Películas Delgadas',sub:'Resultados confiables: espesor, índice de refracción (n, k) y rugosidad en UV–IR con modelos claros y métodos reproducibles. Ideal para I+D, validación de proveedores y control de calidad.',ctaSecondary:'Cómo funciona',ctaPrimary:'info@ellipsometrics.com',k1n:'20+ años',k1l:'experiencia en elipsometría',k2n:'UV–IR',k2l:'rango espectral amplio',k3n:'Rápidos',k3l:'reportes de entrega',pt:'Cómo funciona',ps:'Servicio simple, enfocado y basado en mediciones.',s1t:'1) Cuéntanos tu pregunta',s1d:'¿Qué necesitas saber—espesor, dispersión de n y k, rugosidad, uniformidad, verificación de apilamientos?',s2t:'2) Envía tus muestras',s2d:'Medimos, modelamos y validamos con tus materiales esperados / modelos de dispersión (Cauchy, Tauc‑Lorentz, etc.).',s3t:'3) Recibe un reporte claro',s3d:'Incluye parámetros ajustados, residuales, supuestos, rangos de AOI/λ y datos crudos para tu archivo.',cpTitle:'¿Listo para medir?',cpText:'Escribe a <a href="mailto:info@ellipsometrics.com">info@ellipsometrics.com</a> con materiales, sustrato, rango espectral y espesor esperado. Confirmamos alcance y tiempos.',contactTitle:'Contacto',contactText:'Correo <a href="mailto:info@ellipsometrics.com">info@ellipsometrics.com</a>',footer:'Sitio liviano. Sin cookies. Sin rastreadores.',subject:'Consulta de elipsometría'}
+    };
+
+    const el = s => document.getElementById(s);
+    function apply(lang){
+      const t = i18n[lang]||i18n.en;
+      el('doc-title').textContent=t.title; el('doc-desc').setAttribute('content',t.desc);
+      el('headline').textContent=t.headline; el('sub').textContent=t.sub;
+      el('cta-secondary').textContent=t.ctaSecondary; el('cta-primary').textContent=t.ctaPrimary; 
+      el('kpi1-num').textContent=t.k1n; el('kpi1-label').textContent=t.k1l;
+      el('kpi2-num').textContent=t.k2n; el('kpi2-label').textContent=t.k2l;
+      el('kpi3-num').textContent=t.k3n; el('kpi3-label').textContent=t.k3l;
+      el('process-title').textContent=t.pt; el('process-sub').textContent=t.ps;
+      el('step1-title').textContent=t.s1t; el('step1-desc').textContent=t.s1d;
+      el('step2-title').textContent=t.s2t; el('step2-desc').textContent=t.s2d;
+      el('step3-title').textContent=t.s3t; el('step3-desc').textContent=t.s3d;
+      el('cta-panel-title').textContent=t.cpTitle; el('cta-panel-text').innerHTML=t.cpText;
+      el('contact-title').textContent=t.contactTitle; el('contact-text').innerHTML=t.contactText;
+      el('footer-note').textContent=t.footer;
+      document.documentElement.setAttribute('lang',lang);
+      document.getElementById('btn-en').classList.toggle('active',lang==='en');
+      document.getElementById('btn-es').classList.toggle('active',lang==='es');
+      const subj = encodeURIComponent(t.subject);
+      el('cta-primary').setAttribute('href',`mailto:info@ellipsometrics.com?subject=${subj}`);
+      localStorage.setItem('lang',lang);
+    }
+
+    document.getElementById('btn-en').onclick=()=>{apply('en');history.replaceState(null,'','?lang=en')};
+    document.getElementById('btn-es').onclick=()=>{apply('es');history.replaceState(null,'','?lang=es')};
+
+    const start = new URLSearchParams(location.search).get('lang') || localStorage.getItem('lang') || (navigator.language||'').startsWith('es')?'es':'en';
+    apply(start);
+
     document.getElementById('yr').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
