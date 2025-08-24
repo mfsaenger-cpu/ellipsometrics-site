@@ -122,6 +122,46 @@
       <div style="margin-top:6px" id="footer-note">Lightweight static site. No cookies. No trackers.</div>
     </footer>
   </main>
+
+  <script>
+    // i18n text
+    const i18n = {
+      en:{title:'Ellipsometrics | Spectroscopic Ellipsometry & Consultation',desc:'Spectroscopic ellipsometry measurements and thin‑film consultation. Thickness, n & k, roughness and model fits across UV–IR. Fast, reliable reports for R&D and production.',headline:'Spectroscopic Ellipsometry & Thin‑Film Consultation',sub:'Get results you can trust: thickness, refractive index (n, k), and surface roughness from UV–IR with model fits and clean, reproducible methods. Perfect for R&D, vendor qualification, and production QA.',ctaSecondary:'How it works',ctaPrimary:'info@ellipsometrics.com',k1n:'20+ yrs',k1l:'ellipsometry expertise',k2n:'UV–IR',k2l:'broad spectral range',k3n:'Fast',k3l:'turnaround reports',pt:'How it works',ps:'Simple, focused, measurement‑first engagement.',s1t:'1) Tell us your question',s1d:'What do you need to know—thickness, n & k dispersion, roughness, film uniformity, stack verification?',s2t:'2) Send samples',s2d:'We measure, model, and validate against your expected materials / dispersion models (Cauchy, Tauc‑Lorentz, etc.).',s3t:'3) Receive a clear report',s3d:'Includes fitted parameters, residuals, assumptions, AOI/λ ranges, and raw data for your archives.',cpTitle:'Ready to get measured?',cpText:'Email <a href="mailto:info@ellipsometrics.com">info@ellipsometrics.com</a> with a short note (materials, substrate, wavelength range, expected thickness). We’ll confirm scope and timeline.',contactTitle:'Contact',contactText:'Email <a href="mailto:info@ellipsometrics.com">info@ellipsometrics.com</a>',footer:'Lightweight static site. No cookies. No trackers.',subject:'Ellipsometry inquiry'},
+      es:{title:'Ellipsometrics | Elipsometría Espectroscópica y Consultoría',desc:'Mediciones de elipsometría espectroscópica y consultoría en películas delgadas. Espesor, n y k, rugosidad y modelos en UV–IR. Reportes rápidos y confiables para I+D y producción.',headline:'Elipsometría Espectroscópica y Consultoría en Películas Delgadas',sub:'Resultados confiables: espesor, índice de refracción (n, k) y rugosidad en UV–IR con modelos claros y métodos reproducibles. Ideal para I+D, validación de proveedores y control de calidad.',ctaSecondary:'Cómo funciona',ctaPrimary:'info@ellipsometrics.com',k1n:'20+ años',k1l:'experiencia en elipsometría',k2n:'UV–IR',k2l:'rango espectral amplio',k3n:'Rápidos',k3l:'reportes de entrega',pt:'Cómo funciona',ps:'Servicio simple, enfocado y basado en mediciones.',s1t:'1) Cuéntanos tu pregunta',s1d:'¿Qué necesitas saber—espesor, dispersión de n y k, rugosidad, uniformidad, verificación de apilamientos?',s2t:'2) Envía tus muestras',s2d:'Medimos, modelamos y validamos con tus materiales esperados / modelos de dispersión (Cauchy, Tauc‑Lorentz, etc.).',s3t:'3) Recibe un reporte claro',s3d:'Incluye parámetros ajustados, residuales, supuestos, rangos de AOI/λ y datos crudos para tu archivo.',cpTitle:'¿Listo para medir?',cpText:'Escribe a <a href="mailto:info@ellipsometrics.com">info@ellipsometrics.com</a> con materiales, sustrato, rango espectral y espesor esperado. Confirmamos alcance y tiempos.',contactTitle:'Contacto',contactText:'Correo <a href="mailto:info@ellipsometrics.com">info@ellipsometrics.com</a>',footer:'Sitio liviano. Sin cookies. Sin rastreadores.',subject:'Consulta de elipsometría'}
+    };
+
+    const el = s => document.getElementById(s);
+    function apply(lang){
+      const t = i18n[lang]||i18n.en;
+      el('doc-title').textContent=t.title; el('doc-desc').setAttribute('content',t.desc);
+      el('headline').textContent=t.headline; el('sub').textContent=t.sub;
+      el('cta-secondary').textContent=t.ctaSecondary; el('cta-primary').textContent=t.ctaPrimary; 
+      el('kpi1-num').textContent=t.k1n; el('kpi1-label').textContent=t.k1l;
+      el('kpi2-num').textContent=t.k2n; el('kpi2-label').textContent=t.k2l;
+      el('kpi3-num').textContent=t.k3n; el('kpi3-label').textContent=t.k3l;
+      el('process-title').textContent=t.pt; el('process-sub').textContent=t.ps;
+      el('step1-title').textContent=t.s1t; el('step1-desc').textContent=t.s1d;
+      el('step2-title').textContent=t.s2t; el('step2-desc').textContent=t.s2d;
+      el('step3-title').textContent=t.s3t; el('step3-desc').textContent=t.s3d;
+      el('cta-panel-title').textContent=t.cpTitle; el('cta-panel-text').innerHTML=t.cpText;
+      el('contact-title').textContent=t.contactTitle; el('contact-text').innerHTML=t.contactText;
+      el('footer-note').textContent=t.footer;
+      document.documentElement.setAttribute('lang',lang);
+      document.getElementById('btn-en').classList.toggle('active',lang==='en');
+      document.getElementById('btn-es').classList.toggle('active',lang==='es');
+      const subj = encodeURIComponent(t.subject);
+      el('cta-primary').setAttribute('href',`mailto:info@ellipsometrics.com?subject=${subj}`);
+      localStorage.setItem('lang',lang);
+    }
+
+    document.getElementById('btn-en').onclick=()=>{apply('en');history.replaceState(null,'','?lang=en')};
+    document.getElementById('btn-es').onclick=()=>{apply('es');history.replaceState(null,'','?lang=es')};
+
+    const start = new URLSearchParams(location.search).get('lang') || localStorage.getItem('lang') || (navigator.language||'').startsWith('es')?'es':'en';
+    apply(start);
+
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
 <!DOCTYPE html>
